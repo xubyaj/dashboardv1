@@ -12,7 +12,7 @@ user_id = input("Enter your user ID: ").strip()
 filename = f"sinewave_{user_id}.txt"
 filepath = os.path.join(network_share_path, filename)
 
-sample_rate = 50  # samples per second
+sample_rate = 30  # samples per second
 
 def generate_sinewave(freq, amplitude, t):
     return amplitude * np.sin(2 * np.pi * freq * t)
