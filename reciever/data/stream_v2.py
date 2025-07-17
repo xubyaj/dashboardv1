@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import time
 import shutil
 from datetime import datetime
+import cups
 
 # Specify your network share directory
 directory_to_save = r'/data/Post_Processing/'
@@ -59,10 +60,36 @@ def plot_signals(file_path):
 
     # Save the plot to the 'saved plots' directory
     plot_filename = os.path.join(saved_plots_directory, f'{os.path.basename(file_path).replace(".txt", "")}.png')
+    
+    # Step 2: Save the plot to a file
+    plot_path = plot_filename # Ensure this path is writable
     plt.tight_layout()
     plt.savefig(plot_filename)
     plt.close()  # Close the plot to free up memory
     print(f"Plot saved: {plot_filename}")
+
+    # Step 3: Print the plot using CUPS
+    def print_image(image_path, printer_name):
+        # Connect to CUPS
+        conn = cups.Connection()
+        
+        # Check available printers
+        printers = conn.getPrinters()
+        for index, (name, details) in enumerate(printers.items()):
+            print(f"{index}: {name} - {details}")
+
+        if printer_name not in printers.keys():
+            print(f"Printer {printer_name} not found.")
+            return
+
+        # Print the image
+        print_job_id = conn.printFile(printer_name, image_path, "Sine Wave Plot", {})
+        print(f"Print job sent with ID: {print_job_id}")
+
+    # Define the printer name (check if it matches exactly with the output above)
+    printer_name = 'Canon_TR8600_series'  # Replace with your configured printer's name
+
+    print_image(plot_path, printer_name)
 
 def monitor_directory():
     print("Monitoring directory for new files...")
