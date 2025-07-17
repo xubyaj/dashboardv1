@@ -14,7 +14,7 @@ def print_progress_bar(iteration, total, length=40):
 
 # Parameters
 fs = 100  # Sampling frequency in Hz
-duration_minutes = 50  # Duration in minutes
+duration_minutes = 2  # Duration in minutes
 duration_seconds = duration_minutes * 60  # Convert minutes to seconds
 
 # Time vector
@@ -57,7 +57,7 @@ data['Epoch Time'] = timestamps  # Adding epoch time to the DataFrame
 user_id = input("Please enter your user ID: ")
 
 # Save to .txt file
-output_directory = r"/run/user/1000/gvfs/smb-share:server=192.168.20.29,share=data/Post_Processing/Plots"
+output_directory = r"/run/user/1000/gvfs/smb-share:server=192.168.20.29,share=data/post processing/new data"
 os.makedirs(output_directory, exist_ok=True)  # Ensure the output directory exists
 output_filename = os.path.join(output_directory, f'sine_waves_{user_id}.txt')
 

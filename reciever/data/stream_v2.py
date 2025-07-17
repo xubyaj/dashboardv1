@@ -8,8 +8,8 @@ import cups
 import re
 
 # Specify your network share directory
-directory_to_save = r'/data/Post_Processing/'
-directory_to_monitor = r'/data/Post_Processing/Plots'
+directory_to_save = r'/data/post processing/'
+directory_to_monitor = r'/data/post processing/new data'
 saved_data_directory = os.path.join(directory_to_save, 'saved data')
 saved_plots_directory = os.path.join(directory_to_save, 'saved plots')
 
