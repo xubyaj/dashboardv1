@@ -7,7 +7,7 @@ from contextlib import closing
 app = Flask(__name__)
 
 # Automatically set path to 'Plots' directory inside the current working directory
-network_share_path = os.path.join(os.getcwd(), "Plots")
+network_share_path = os.path.join(os.getcwd(), "real time/data")
 
 HTML_PAGE = """
 <!DOCTYPE html>

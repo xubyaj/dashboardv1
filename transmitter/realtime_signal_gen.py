@@ -5,7 +5,7 @@ import os
 import sys
 
 # Set path to shared folder (adjust as needed)
-network_share_path = r"/run/user/1000/gvfs/smb-share:server=192.168.20.29,share=data/Plots"
+network_share_path = r"/run/user/1000/gvfs/smb-share:server=192.168.20.29,share=data/real time/data"
 os.makedirs(network_share_path, exist_ok=True)
 
 user_id = input("Enter your user ID: ").strip()

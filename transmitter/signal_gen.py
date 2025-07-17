@@ -14,7 +14,7 @@ def print_progress_bar(iteration, total, length=40):
 
 # Parameters
 fs = 100  # Sampling frequency in Hz
-duration_minutes = 2  # Duration in minutes
+duration_minutes = 60  # Duration in minutes
 duration_seconds = duration_minutes * 60  # Convert minutes to seconds
 
 # Time vector
