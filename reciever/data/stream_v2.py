@@ -5,6 +5,7 @@ import time
 import shutil
 from datetime import datetime
 import cups
+import re
 
 # Specify your network share directory
 directory_to_save = r'/data/Post_Processing/'
@@ -40,6 +41,10 @@ def plot_signals(file_path):
     except Exception as e:
         print(f"Error reading {file_path}: {e}")
         return
+    # Extract the number from the filename to use in the title
+    file_name = os.path.basename(file_path)
+    match = re.search(r'_(\d+)\.txt$', file_name)  # Change regex according to your file naming convention
+    number = file_name.split('_')[-1]#match.group(1) if match else "Unknown"
 
     # Plot each signal in a separate subplot
     num_signals = data.shape[1] - 1  # Exclude the 'Epoch Time' column
@@ -55,6 +60,7 @@ def plot_signals(file_path):
         plt.xlabel('Time (seconds)')
         plt.ylabel(data.columns[i])
         plt.title(f'Signal: {data.columns[i]}')
+        plt.title(f'Signal {i+1} from Participant: {number}')  # Add title with file number
         plt.grid()
         plt.legend()
 
